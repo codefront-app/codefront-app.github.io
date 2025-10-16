@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CodeFront – rolig utviklerstart</title>
+    <meta
+      name="description"
+      content="CodeFront er morgenrutinen for utviklere – samlede tech-nyheter, git-hurtigkort og verktøysnarveier på ett sted."
+    />
+    <link rel="stylesheet" href="assets/styles/base.css" />
+    <link rel="stylesheet" href="assets/styles/components.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <header class="hero hero--center">
+      <div class="hero__content">
+        <span class="hero__badge">CodeFront</span>
+        <h1>Rolig startside for utviklere</h1>
+        <p>
+          Morgenrutinen som samler tech-nyheter, git-kort og hurtigverktøy. Ett
+          kontrollrom. Én rytme.
+        </p>
+        <div class="hero__actions">
+          <button class="button button--primary" data-action="refresh">Oppdater feeds</button>
+          <button class="button" data-action="focus">Start fokusøkt</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="feeds">
+        <div class="section__head">
+          <h2>Nyhetsmiks</h2>
+          <p>Hacker News, Reddit og Tek.no samlet i én rolig feed.</p>
+        </div>
+        <div class="feed" data-feed-list></div>
+      </section>
+
+      <section class="section" id="git-cheats">
+        <div class="section__head">
+          <h2>Dagens git-kort</h2>
+          <p>Lær én kommando om dagen – og gå videre.</p>
+        </div>
+        <div class="grid" data-git-deck></div>
+      </section>
+
+      <section class="section" id="quick-tools">
+        <div class="section__head">
+          <h2>Hurtigverktøy</h2>
+          <p>Åpne favorittverktøy uten å forlate flytsonen.</p>
+        </div>
+        <div class="quick-tools" data-quick-tools></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <span>© <span id="year"></span> CodeFront</span>
+        <nav class="footer__nav">
+          <a href="https://warpingcars.github.io/warpedev.github.io/">Til Warpedev</a>
+          <a href="https://warpingcars.github.io/codefront-app.github.io/">CodeFront</a>
+          <a href="https://warpingcars.github.io/growr-app.github.io/">Growr</a>
+          <a href="https://warpingcars.github.io/spontis-app.github.io/">Spontis</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="assets/scripts/utils.js" defer></script>
+    <script src="scripts/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+:root {
+  --container: min(1120px, 92vw);
+  --section-gap: clamp(3.5rem, 8vw, 6rem);
+  --grid-gap: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(3rem, 8vw, 6rem) 1.6rem;
+  text-align: center;
+}
+
+.hero__content {
+  width: min(640px, 100%);
+  display: grid;
+  gap: 1.4rem;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: rgba(14, 165, 233, 0.18);
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.45);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: 0 10px 28px rgba(14, 165, 233, 0.3);
+}
+
+.button--primary {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(56, 189, 248, 0.85));
+  border-color: rgba(14, 165, 233, 0.4);
+  color: #0f172a;
+  font-weight: 600;
+}
+
+main {
+  width: var(--container);
+  margin: 0 auto;
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+.section {
+  margin-top: var(--section-gap);
+}
+
+.section__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.6rem;
+}
+
+.section__head p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card {
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  box-shadow: 0 20px 48px rgba(8, 47, 73, 0.35);
+  padding: clamp(1.4rem, 3vw, 1.8rem);
+  display: grid;
+  gap: 0.8rem;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(8, 47, 73, 0.45);
+}
+
+.card__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.feed {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.feed__item {
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  background: var(--surface-soft);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  display: grid;
+  gap: 0.5rem;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.feed__item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.feed__meta {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+
+.quick-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.quick-tools a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--surface-soft);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  color: var(--text);
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.quick-tools a:hover,
+.quick-tools a:focus-visible {
+  border-color: rgba(56, 189, 248, 0.45);
+  transform: translateY(-2px);
+}
+
+.footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  padding: 2rem 1.6rem 3rem;
+  margin-top: var(--section-gap);
+}
+
+.footer__content {
+  width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer__nav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.footer__nav a {
+  color: var(--accent);
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.footer__nav a:hover {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .footer__content {
+    justify-content: center;
+  }
+}

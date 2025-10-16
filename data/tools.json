@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Regex tester",
+    "hint": "Test mønstre lynraskt",
+    "url": "https://regex101.com/"
+  },
+  {
+    "label": "JSON prettify",
+    "hint": "Format JSON på sekunder",
+    "url": "https://jsoncrack.com/editor"
+  },
+  {
+    "label": "Cron visual",
+    "hint": "Tolker cron-uttrykk",
+    "url": "https://crontab.guru/"
+  },
+  {
+    "label": "Diff checker",
+    "hint": "Finn endringer i tekst",
+    "url": "https://www.diffchecker.com/"
+  }
+]
