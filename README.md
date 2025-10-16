@@ -32,6 +32,8 @@ styles/
 - Daglig teller: "Les 2/dag" + enkel streak.
 - Cache/oppdateringsskript som henter feeds og skriver til `data/*.json`.
 - Personlige snarveier (lagres i localStorage) og søk etter favoritter.
+- Miniredaktør i Warpedev-huben for å oppdatere `data/*.json` herfra.
+- Delte komponenter/stiler via Warpedev-assets slik at looks holdes synkron.
 
 ## Lokal testing
 Bare åpne `index.html` i nettleser. All logikk kjører i klienten. Endre JSON-filer og refreshe siden.
