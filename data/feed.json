@@ -1,24 +1,36 @@
 [
   {
+    "id": "seed-hn",
+    "source": "seed",
+    "sourceName": "Hacker News",
+    "audience": "tech",
+    "category": "tech",
     "title": "Hacker News: Lightweight ML framework lands in core",
-    "source": "Hacker News",
     "url": "https://news.ycombinator.com/",
-    "posted": "2024-11-18T06:30:00Z",
+    "publishedAt": "2024-11-18T06:30:00Z",
     "tags": ["AI", "Backend"],
-    "summary": "Diskusjonen tar for seg et nytt oppsett for å bygge ML-modeller uten store dependency-kjeder." 
+    "summary": "Diskusjonen tar for seg et nytt oppsett for å bygge ML-modeller uten store dependency-kjeder."
   },
   {
-    "title": "r/webdev: Favoritt VS Code-plugins for 2025",
-    "source": "Reddit",
+    "id": "seed-reddit",
+    "source": "seed",
+    "sourceName": "Reddit /r/webdev",
+    "audience": "tech",
+    "category": "tech",
+    "title": "Favoritt VS Code-plugins for 2025",
     "url": "https://www.reddit.com/r/webdev/",
-    "posted": "2024-11-18T07:00:00Z",
+    "publishedAt": "2024-11-18T07:00:00Z",
     "tags": ["Frontend"]
   },
   {
-    "title": "Tek.no: Nytt grafikkort gir 30% lavere strømforbruk",
-    "source": "Tek.no",
+    "id": "seed-tekno",
+    "source": "seed",
+    "sourceName": "Tek.no",
+    "audience": "general",
+    "category": "hardware",
+    "title": "Nytt grafikkort gir 30% lavere strømforbruk",
     "url": "https://www.tek.no/",
-    "posted": "2024-11-17T21:00:00Z",
+    "publishedAt": "2024-11-17T21:00:00Z",
     "tags": ["Hardware"]
   }
 ]

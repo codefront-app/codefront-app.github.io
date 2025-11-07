@@ -4,6 +4,7 @@ const toolsTray = document.querySelector("[data-quick-tools]");
 const actionButtons = document.querySelectorAll("[data-action]");
 const yearEl = document.getElementById("year");
 const { formatRelativeTime, createEl } = window.CodeFrontUtils;
+const state = { config: {} };
 
 async function fetchJson(path) {
   const res = await fetch(path, { cache: "no-store" });
@@ -11,6 +12,16 @@ async function fetchJson(path) {
     throw new Error(`Kunne ikke hente ${path}`);
   }
   return res.json();
+}
+
+async function loadConfig() {
+  try {
+    const config = await fetchJson("data/config.json");
+    state.config = config;
+  } catch (error) {
+    console.warn("Fant ikke config.json, bruker fallback", error);
+    state.config = {};
+  }
 }
 
 function renderFeed(entries) {
@@ -24,10 +35,19 @@ function renderFeed(entries) {
     const card = createEl("article", "feed__item");
 
     const meta = createEl("div", "feed__meta");
-    meta.appendChild(createEl("span", "feed__source", item.source));
-    if (item.posted) {
-      meta.appendChild(createEl("span", "", formatRelativeTime(item.posted)));
+    const sourceLabel = item.sourceName || item.source || "Ukjent kilde";
+    meta.appendChild(createEl("span", "feed__source", sourceLabel));
+
+    const posted = item.publishedAt || item.posted;
+    if (posted) {
+      const iso = typeof posted === "number" ? new Date(posted).toISOString() : posted;
+      meta.appendChild(createEl("span", "", formatRelativeTime(iso)));
     }
+
+    if (item.category) {
+      meta.appendChild(createEl("span", "", item.category));
+    }
+
     if (item.tags?.length) {
       item.tags.forEach((tag) => {
         meta.appendChild(createEl("span", "", `#${tag}`));
@@ -42,8 +62,9 @@ function renderFeed(entries) {
     link.textContent = item.title;
     card.appendChild(link);
 
-    if (item.summary) {
-      card.appendChild(createEl("p", "", item.summary));
+    const summary = item.summary || item.description;
+    if (summary) {
+      card.appendChild(createEl("p", "", summary));
     }
 
     feedContainer.appendChild(card);
@@ -91,10 +112,41 @@ function renderTools(tools) {
   });
 }
 
+async function loadFeed() {
+  const endpoint = resolveEndpoint();
+  if (endpoint) {
+    try {
+      const res = await fetch(endpoint, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Endpoint ${endpoint} svarte ${res.status}`);
+      const payload = await res.json();
+      return payload.items ?? payload;
+    } catch (error) {
+      console.warn("Klarte ikke hente live-feed, bruker fallback", error);
+    }
+  }
+
+  const fallbackPath = state.config.fallbackFeed || "data/feed.json";
+  return fetchJson(fallbackPath);
+}
+
+function resolveEndpoint() {
+  if (state.config.newsEndpoint) {
+    return state.config.newsEndpoint;
+  }
+
+  if (window.location.hostname === "localhost") {
+    return "http://localhost:4010/api/feed";
+  }
+
+  return "";
+}
+
 async function loadAll() {
   try {
+    await loadConfig();
+
     const [feed, git, tools] = await Promise.all([
-      fetchJson("data/feed.json"),
+      loadFeed(),
       fetchJson("data/git.json"),
       fetchJson("data/tools.json")
     ]);

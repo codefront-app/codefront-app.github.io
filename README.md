@@ -14,6 +14,7 @@ assets/
     utils.js         – små hjelpefunksjoner (datoformat, DOM)
 data/
   feed.json          – cachede feed-poster (HN/Reddit/Tek.no)
+  config.json        – peker på live-endepunkt + fallback
   git.json           – git-cheats som kort
   tools.json         – hurtigverktøylenker
 scripts/
@@ -23,7 +24,8 @@ styles/
 ```
 
 ## MVP-funksjoner
-- **Nyhetsmiks**: `data/feed.json` vises som én rolig feedliste.
+- **Nyhetsmiks**: prøver først `news-dev-hub` (konfigureres i `data/config.json`),
+  og faller tilbake til `data/feed.json`.
 - **Git-cheats**: Kort med kommando, kategori og forklaring.
 - **Hurtigverktøy**: Knapper til regex/json/cron/diff eller egne favoritter.
 
@@ -36,7 +38,9 @@ styles/
 - Delte komponenter/stiler via Warpedev-assets slik at looks holdes synkron.
 
 ## Lokal testing
-Bare åpne `index.html` i nettleser. All logikk kjører i klienten. Endre JSON-filer og refreshe siden.
+1. (Valgfritt) Start backend (`news-dev-hub/backend npm run dev`) for live-feed.
+2. Åpne `index.html` i nettleser. All logikk kjører i klienten. Endre JSON-filer og refreshe siden.
+   Når backend kjører lokalt, CodeFront henter feeden fra `http://localhost:4010/api/feed`.
 
 ## Deploy
 Push til `main` – GitHub Pages server `main`-roten.

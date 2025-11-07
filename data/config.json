@@ -1,0 +1,4 @@
+{
+  "newsEndpoint": "",
+  "fallbackFeed": "data/feed.json"
+}
